@@ -97,7 +97,7 @@ def json_to_pdf(filename, sprint_id,releaseVersion, testType, instancesTested, p
         # Change the title based on sprint data
         if heading == "puntedIssues":
             heading = "Issues Removed From Sprint"
-        if heading =="ssuesNotCompletedInCurrentSprint":
+        if heading =="issuesNotCompletedInCurrentSprint":
             heading = "Spill over"
 
         # Add heading to PDF on the new page
