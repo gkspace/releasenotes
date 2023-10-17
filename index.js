@@ -33,7 +33,7 @@ var releaseType = req.body.releaseType.trim();
     
 // Execute the Python script with the provided form data to get release notes
 
-const pythonProcess = spawn('python', [__dirname + '\\main.py', projectName, sprintName, authId, releaseVersion, testType, instancesTested, platformOsVersion, apiVersion, releaseDate, releaseType]);
+const pythonProcess = spawn('python', [__dirname + '/main.py', projectName, sprintName, authId, releaseVersion, testType, instancesTested, platformOsVersion, apiVersion, releaseDate, releaseType]);
 
 
 pythonProcess.stdout.on('data', (data) => {
