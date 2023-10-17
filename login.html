@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+
+    <!-- Add Bootstrap CSS (You can use a local copy or a CDN) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Add custom CSS for theme toggling, login page, and dropdown styling -->
+    <style>
+        .login-alert {
+            position: fixed;
+            top: 8%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1050;
+            max-width: auto;
+            white-space: nowrap;
+            padding: 15px;
+        }
+
+        .login-container {
+            background-color: #f0f0f0;
+            border: 2px solid #ccc;
+            padding: 40px;
+            max-width: 400px;
+            border-radius: 10px;
+            border-color: #000000;
+            margin: 0 auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Light Theme */
+        body.theme-light {
+            --bs-bg-opacity: 0.5;
+            background-color: rgba(248, 249, 250, var(--bs-bg-opacity));
+            color: #000000;
+        }
+
+        /* Dark Theme */
+        body.theme-dark {
+            --bs-bg-opacity: 0.87;
+            background-color: rgba(26, 29, 32, var(--bs-bg-opacity));
+            color: #ebe6e6;
+        }
+
+        .container {
+            max-width: 100%; /* Allow the container to take the full width */
+            margin: 0 auto;
+            margin-top: 100px;
+            padding: 15px; /* Add padding for better readability on smaller screens */
+        }
+
+        /* Dropdown Button Styling */
+        .dropdown-toggle.custom-bg {
+            background-color: #6f42c1;
+        }
+
+        @media (max-width: 768px) {
+            /* Adjust styles for screens smaller than 768px */
+            .container {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body class="theme-light">
+    <div class="container">
+        <div class="login-container">
+            <h2 class="text-center">Login</h2>
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" id="username" placeholder="Enter your username">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="password" placeholder="Enter your password">
+                </div>
+                <button class="btn btn-primary w-100 py-2 mt-2" type="submit">
+                    Login
+                </button>
+            </form>
+        </div>
+    </div>
+   
+    <!-- Replace the previous dropdown with the new dropdown -->
+    <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
+        <button class="btn btn-bd-primary py-2 dropdown-toggle custom-bg" id="bd-theme" type="button"  data-bs-toggle="dropdown" aria-expanded="false">
+            <span class="bi my-1 theme-icon-active" width="1em" height="1em">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-sun" viewBox="0 0 16 16">
+                    <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                  </svg>
+            </span>
+            <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end custom-bg light" aria-labelledby="bd-theme-text">
+            <li>
+                <button type="button" class="dropdown-item" data-bs-theme-value="light">
+                    <span class="bi me-2 opacity-50 theme-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sun" viewBox="0 0 16 16">
+                            <path d="M8 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm0 1a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                          </svg>
+                    </span>
+                    Light
+                </button>
+            </li>
+            <li>
+                <button type="button" class="dropdown-item" data-bs-theme-value="dark">
+                    <span class="bi me-2 opacity-50 theme-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-moon-stars-fill" viewBox="0 0 16 16">
+                            <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+                            <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
+                          </svg>
+                    </span>
+                    Dark
+                </button>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Add Bootstrap JavaScript and Popper.js (You can use a local copy or a CDN) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Custom JavaScript for theme toggling -->
+<script>
+    const themeDropdown = document.getElementById("bd-theme");
+    const body = document.body;
+
+    themeDropdown.addEventListener("click", function(event) {
+        // Prevent the dropdown from being toggled when the theme button is clicked
+        event.stopPropagation();
+    });
+
+    const themeOptions = document.querySelectorAll("[data-bs-theme-value]");
+    themeOptions.forEach(function(option) {
+        option.addEventListener("click", function() {
+            const themeValue = this.getAttribute("data-bs-theme-value");
+
+            // Remove any existing theme classes
+            body.classList.remove("theme-light", "theme-dark");
+
+            if (themeValue === "light") {
+    // Apply the light theme
+    body.classList.add("theme-light");
+    document.querySelector(".login-container").style.backgroundColor = "#f0f0f0";
+    document.querySelector(".login-container").style.borderColor = "#000000"; // Set border color to black
+    // Update the sun icon to white
+    document.querySelector(".theme-icon-active svg").innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-sun-fill" viewBox="0 0 16 16"><path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/></svg>';
+} else if (themeValue === "dark") {
+    // Apply the dark theme
+    body.classList.add("theme-dark");
+    document.querySelector(".login-container").style.backgroundColor = "#212529";
+    document.querySelector(".login-container").style.borderColor = "#fff"; // Set border color to white
+    // Update the moon icon to white
+    document.querySelector(".theme-icon-active svg").innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-moon-stars-fill" viewBox="0 0 16 16"><path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/><path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/></svg>';
+}
+        });
+    });
+
+     // Define a hardcoded username and password for demonstration purposes
+     const validUsername = "trimbleinc";
+     const validPassword = "password";
+
+     function showAlert(message, isSuccess) {
+            const alertClass = isSuccess ? "alert-success" : "alert-danger";
+            const alertElement = document.createElement("div");
+            alertElement.className = `alert ${alertClass} login-alert`;
+            alertElement.innerHTML = message;
+
+            // Append the alert to the body
+            document.body.appendChild(alertElement);
+
+            // Automatically remove the alert after a few seconds
+            setTimeout(function() {
+                alertElement.remove();
+            }, 3000); // Remove the alert after 3 seconds (adjust as needed)
+        }
+
+        document.getElementById("loginForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevents the default form submission behavior
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Check if the entered credentials match the hardcoded values
+            if (username === validUsername && password === validPassword) {
+                showAlert("Login successful!", true); // Display a success message
+                window.location.href = "index.html";
+            } else {
+                showAlert("Invalid username or password. Please try again.", false); // Display an error message
+            }
+        });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+
+/* Light Theme */
+body.theme-light {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* Dark Theme */
+body.theme-dark {
+    background-color:#000000;
+    color: #ffffff;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 100px;
+}
+
+/* Dropdown Button Styling */
+.dropdown-toggle.custom-bg {
+    background-color: #6f42c1; /* Set the background color of the dropdown button to #6f42c1 */
+}
+#bd-theme::after {
+border-top-color: white ;
+}
