@@ -36,7 +36,7 @@ def json_to_pdf(filename, sprint_id,releaseVersion, testType, instancesTested, p
             ("Platform & OS version", platformOsVersion),
             ("API version", apiVersion),
             ("Release Date", releaseDate),
-            ("Release Type", releaseVersion),
+            ("Release Type", releaseType),
         ]
 
     # Define colors
